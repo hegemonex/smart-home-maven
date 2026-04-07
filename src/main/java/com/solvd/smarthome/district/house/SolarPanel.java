@@ -1,0 +1,55 @@
+package com.solvd.smarthome.district.house;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+public class SolarPanel {
+
+    private String manufacturer;
+    private BigDecimal outputKw;
+    private int panelCount;
+    private LocalDate installedDate;
+
+    public SolarPanel(String manufacturer, BigDecimal outputKw, int panelCount, LocalDate installedDate) {
+        this.manufacturer = manufacturer;
+        this.outputKw = outputKw;
+        this.panelCount = panelCount;
+        this.installedDate = installedDate;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public BigDecimal getOutputKw() {
+        return outputKw;
+    }
+
+    public void setOutputKw(BigDecimal outputKw) {
+        this.outputKw = outputKw;
+    }
+
+    public int getPanelCount() {
+        return panelCount;
+    }
+
+    public void setPanelCount(int panelCount) {
+        this.panelCount = panelCount;
+    }
+
+    public LocalDate getInstalledDate() {
+        return installedDate;
+    }
+
+    public void setInstalledDate(LocalDate installedDate) {
+        this.installedDate = installedDate;
+    }
+
+    public String solarInfo() {
+        return "Solar Panel | Manufacturer: " + manufacturer + " | Output: " + outputKw + " kW | Panels: " + panelCount + " | Installed: " + installedDate;
+    }
+}
