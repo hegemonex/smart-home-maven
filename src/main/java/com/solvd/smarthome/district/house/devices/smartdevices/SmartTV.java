@@ -1,6 +1,8 @@
 package com.solvd.smarthome.district.house.devices.smartdevices;
 
 import com.solvd.smarthome.district.house.devices.Connectable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -10,6 +12,7 @@ public class SmartTV extends SmartDevice implements Connectable {
     private String brand;
     private int screenSize;
     private boolean isOn;
+    private static final Logger logger = LogManager.getLogger(SmartTV.class);
 
     public SmartTV(String name, BigDecimal price, LocalDate installedDate, String brand, int screenSize, boolean connected) {
         super(name, price, installedDate, connected);
@@ -59,16 +62,16 @@ public class SmartTV extends SmartDevice implements Connectable {
 
     @Override
     public void operate() {
-        System.out.println(name + " is televisioning");
+        logger.info("Operating SmartTV");
     }
 
     @Override
     public void connect() {
-        System.out.println(name + " is connecting");
+        logger.info("Connecting SmartTV");
     }
 
     @Override
     public void disconnect() {
-        System.out.println(name + " is disconnecting");
+        logger.info("Disconnecting SmartTV");
     }
 }

@@ -1,6 +1,9 @@
 package com.solvd.smarthome.district.house.devices;
 
+import com.solvd.smarthome.district.house.SmartHome;
 import com.solvd.smarthome.exceptions.DeviceInstallationException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -9,9 +12,10 @@ import java.util.Objects;
 public abstract class Device {
 
     protected static int deviceCount = 0;
+    private static final Logger logger = LogManager.getLogger(Device.class);
 
     static {
-        System.out.println("Device class loaded. Smart Home system starting...");
+        logger.info("Device class loaded. Smart Home system starting...");
     }
 
     protected String name;
@@ -19,7 +23,7 @@ public abstract class Device {
     protected LocalDate installedDate;
 
     {
-        System.out.println("A device object is being created.");
+        logger.info("A device object is being created.");
     }
 
     public Device(String name, BigDecimal price, LocalDate installedDate) {
@@ -37,7 +41,7 @@ public abstract class Device {
     }
 
     public final void printDeviceName() {
-        System.out.println(name);
+        logger.info(name);
     }
 
     public String getName() {

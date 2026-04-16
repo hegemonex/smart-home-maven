@@ -9,6 +9,8 @@ import com.solvd.smarthome.district.house.rooms.Garage;
 import com.solvd.smarthome.district.house.rooms.Garden;
 import com.solvd.smarthome.district.house.rooms.HomeGym;
 import com.solvd.smarthome.util.Pair;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,9 +23,10 @@ public class SmartHome {
 
     private static final String SYSTEM_VERSION = "2.0";
     private static int totalHomes = 0;
+    private static final Logger logger = LogManager.getLogger(SmartHome.class);
 
     static {
-        System.out.println("SmartHome system initialized. Version: " + SYSTEM_VERSION);
+        logger.info("Listing all devices for home: {}", SYSTEM_VERSION);
     }
 
     private final String name;

@@ -1,5 +1,8 @@
 package com.solvd.smarthome.enums;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 
@@ -16,17 +19,15 @@ public enum EnergyRating {
     F("F", 1000, new BigDecimal("-120.00"), "DARK_RED"),
     G("G", 1200, new BigDecimal("-200.00"), "DARK_RED");
 
-    static {
-        System.out.println("[EnergyRating] All " + EnergyRating.values().length + " rating tiers registered.");
-    }
+    private static final Logger logger = LogManager.getLogger(EnergyRating.class);
 
     private final String label;
     private final int maxKwhPerYear;
     private final BigDecimal annualSavingVsBaseline;
     private final String colour;
 
-    {
-        System.out.println("[EnergyRating] Registering rating constant (instance init block)...");
+    static {
+        logger.info("EnergyRating enum loaded.");
     }
 
     EnergyRating(String label, int maxKwhPerYear, BigDecimal annualSavingVsBaseline, String colour) {
@@ -37,27 +38,43 @@ public enum EnergyRating {
     }
 
     public static EnergyRating recommend(int actualKwhPerYear) {
-        return Arrays.stream(values())
+        EnergyRating result = Arrays.stream(values())
                 .filter(r -> actualKwhPerYear <= r.maxKwhPerYear)
                 .findFirst()
                 .orElse(G);
+
+        logger.debug("Recommended EnergyRating {} for {} kWh/year", result, actualKwhPerYear);
+        return result;
     }
 
     public BigDecimal annualCost(BigDecimal pricePerKwh) {
-        return pricePerKwh.multiply(new BigDecimal(maxKwhPerYear));
+        return pricePerKwh.multiply(BigDecimal.valueOf(maxKwhPerYear));
     }
 
     public boolean isSubsidyEligible() {
         return this.ordinal() <= A_PLUS.ordinal();
     }
 
-    public String getLabel() { return label; }
-    public int getMaxKwhPerYear() { return maxKwhPerYear; }
-    public BigDecimal getAnnualSavingVsBaseline() { return annualSavingVsBaseline; }
-    public String getcolour() { return colour; }
+    public String getLabel() {
+        return label;
+    }
+
+    public int getMaxKwhPerYear() {
+        return maxKwhPerYear;
+    }
+
+    public BigDecimal getAnnualSavingVsBaseline() {
+        return annualSavingVsBaseline;
+    }
+
+    public String getColour() {
+        return colour;
+    }
 
     @Override
     public String toString() {
-        return label + " (≤" + maxKwhPerYear + " kWh/yr, colour=" + colour + ")";
+        return label +
+                " (≤" + maxKwhPerYear +
+                " kWh/yr, colour=" + colour + ")";
     }
 }

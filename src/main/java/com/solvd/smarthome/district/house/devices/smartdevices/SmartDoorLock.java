@@ -2,6 +2,8 @@ package com.solvd.smarthome.district.house.devices.smartdevices;
 
 import com.solvd.smarthome.district.house.devices.Connectable;
 import com.solvd.smarthome.district.house.devices.Device;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,6 +14,7 @@ public class SmartDoorLock extends Device implements Connectable {
     private String lockModel;
     private boolean locked;
     private LocalDateTime lastUnlocked;
+    private static final Logger logger =  LogManager.getLogger(SmartDoorLock.class);
 
     public SmartDoorLock(String name, BigDecimal price, LocalDate installedDate, String lockModel) {
         super(name, price, installedDate);
@@ -61,16 +64,16 @@ public class SmartDoorLock extends Device implements Connectable {
 
     @Override
     public void operate() {
-        System.out.println(name + " is locking");
+        logger.info("{} is locking");
     }
 
     @Override
     public void connect() {
-        System.out.println(name + " is connecting");
+        logger.info("{} is connecting");
     }
 
     @Override
     public void disconnect() {
-        System.out.println(name + " is disconnecting");
+        logger.info("{} is disconnecting");
     }
 }
