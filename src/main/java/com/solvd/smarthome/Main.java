@@ -19,6 +19,8 @@ import com.solvd.smarthome.enums.DeviceStatus;
 import com.solvd.smarthome.enums.EnergyRating;
 import com.solvd.smarthome.lambdas.DeviceService;
 import com.solvd.smarthome.reflection.ReflectionDemo;
+import com.solvd.smarthome.threads.CompletableFutureDemo;
+import com.solvd.smarthome.threads.ThreadDemo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -41,7 +43,7 @@ public class Main {
         return new ArrayList<>(Arrays.asList(items));
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         List<DeviceGroup> deviceGroups = new ArrayList<>();
 
@@ -181,5 +183,13 @@ public class Main {
         }
 
         logger.info("[DONE] System simulation finished successfully.");
+
+
+        ThreadDemo.runThreadExamples();
+
+        ThreadDemo.runConnectionPoolDemo();
+
+        CompletableFutureDemo.runAll();
+
     }
 }
