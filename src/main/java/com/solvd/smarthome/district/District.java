@@ -1,16 +1,25 @@
 package com.solvd.smarthome.district;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class District {
 
     private String districtName;
     private String city;
     private String country;
-    private final Map<String, Street> streetMap;
+
+    @XmlElementWrapper(name = "streetmap")
+    @XmlElement(name = "street")
+    private  Map<String, Street> streetMap;
 
     public District(String districtName, String city, String country, List<Street> streets) {
         this.districtName = districtName;
@@ -24,6 +33,8 @@ public class District {
             }
         }
     }
+
+    public District() {}
 
     public String getDistrictName() {
         return districtName;

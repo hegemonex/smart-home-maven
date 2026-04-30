@@ -1,13 +1,21 @@
 package com.solvd.smarthome.district.house;
 
+import com.solvd.smarthome.timeadapter.LocalDateAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SolarPanel {
 
     private String manufacturer;
     private BigDecimal outputKw;
     private int panelCount;
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate installedDate;
 
     public SolarPanel(String manufacturer, BigDecimal outputKw, int panelCount, LocalDate installedDate) {
@@ -15,6 +23,9 @@ public class SolarPanel {
         this.outputKw = outputKw;
         this.panelCount = panelCount;
         this.installedDate = installedDate;
+    }
+
+    public SolarPanel() {
     }
 
     public String getManufacturer() {

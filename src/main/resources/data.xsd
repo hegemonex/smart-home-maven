@@ -1,0 +1,163 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="smartHome">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="name"/>
+                <xs:element type="xs:date" name="builtDate"/>
+                <xs:element name="neighbourhood">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="name"/>
+                            <xs:element type="xs:string" name="city"/>
+                            <xs:element type="xs:byte" name="totalHouses"/>
+                            <xs:element type="xs:string" name="hasSecurityGate"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="networkProvider">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="companyName"/>
+                            <xs:element type="xs:float" name="monthlyFee"/>
+                            <xs:element type="xs:short" name="speedMbps"/>
+                            <xs:element type="xs:string" name="connectionType"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="securityCompany">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="name"/>
+                            <xs:element type="xs:string" name="contactNumber"/>
+                            <xs:element type="xs:float" name="monthlyFee"/>
+                            <xs:element type="xs:string" name="armed"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="solarPanel">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="manufacturer"/>
+                            <xs:element type="xs:float" name="outputKw"/>
+                            <xs:element type="xs:byte" name="panelCount"/>
+                            <xs:element type="xs:date" name="installedDate"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="sewerageSystem">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="provider"/>
+                            <xs:element type="xs:string" name="connected"/>
+                            <xs:element type="xs:date" name="lastInspected"/>
+                            <xs:element type="xs:string" name="pipeType"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="garage">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="name"/>
+                            <xs:element type="xs:float" name="area"/>
+                            <xs:element type="xs:string" name="devicegroups"/>
+                            <xs:element type="xs:byte" name="carCapacity"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="garden">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="name"/>
+                            <xs:element type="xs:float" name="area"/>
+                            <xs:element type="xs:string" name="devicegroups"/>
+                            <xs:element type="xs:string" name="hasIrrigation"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="homeGym">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="name"/>
+                            <xs:element type="xs:float" name="area"/>
+                            <xs:element type="xs:string" name="devicegroups"/>
+                            <xs:element type="xs:byte" name="equipmentCount"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="owners">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="owner">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="name"/>
+                                        <xs:element type="xs:string" name="email"/>
+                                        <xs:element type="xs:string" name="phone"/>
+                                        <xs:element type="xs:date" name="memberSince"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="floors">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="floor">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:byte" name="floorNumber"/>
+                                        <xs:element type="xs:string" name="label"/>
+                                        <xs:element name="rooms">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="room">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element type="xs:string" name="name"/>
+                                                                <xs:element type="xs:float" name="area"/>
+                                                                <xs:element name="devicegroups">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="devicegroup" maxOccurs="unbounded" minOccurs="0">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element type="xs:string" name="groupName"/>
+                                                                                        <xs:element type="xs:string" name="category"/>
+                                                                                        <xs:element name="zones">
+                                                                                            <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                    <xs:element name="devicezone" maxOccurs="unbounded" minOccurs="0">
+                                                                                                        <xs:complexType>
+                                                                                                            <xs:sequence>
+                                                                                                                <xs:element type="xs:string" name="zoneName"/>
+                                                                                                                <xs:element type="xs:string" name="location"/>
+                                                                                                                <xs:element type="xs:string" name="deviceplacementmap"/>
+                                                                                                            </xs:sequence>
+                                                                                                        </xs:complexType>
+                                                                                                    </xs:element>
+                                                                                                </xs:sequence>
+                                                                                            </xs:complexType>
+                                                                                        </xs:element>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

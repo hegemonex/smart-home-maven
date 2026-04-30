@@ -2,18 +2,21 @@ package com.solvd.smarthome.district.house.devices.smartdevices;
 
 
 import com.solvd.smarthome.district.house.devices.Connectable;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SmartRouter extends SmartDevice implements Connectable {
 
     private String ssid;
     private int connectedDevicesCount;
     private double bandwidthGbps;
-    private static final Logger logger = LogManager.getLogger(SmartRouter.class);
+    private static  Logger logger = LogManager.getLogger(SmartRouter.class);
 
     public SmartRouter(String name, BigDecimal price, LocalDate installedDate, String ssid, int connectedDevicesCount, double bandwidthGbps, boolean connected) {
         super(name, price, installedDate, connected);
@@ -22,8 +25,7 @@ public class SmartRouter extends SmartDevice implements Connectable {
         this.bandwidthGbps = bandwidthGbps;
     }
 
-    public SmartRouter() {
-    }
+    public SmartRouter() {}
 
     public String getSsid() {
         return ssid;

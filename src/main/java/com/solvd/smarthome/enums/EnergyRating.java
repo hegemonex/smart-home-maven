@@ -1,11 +1,13 @@
 package com.solvd.smarthome.enums;
 
+import jakarta.xml.bind.annotation.XmlEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 
+@XmlEnum
 public enum EnergyRating {
 
     A_PLUS_PLUS_PLUS("A+++", 100, new BigDecimal("320.00"), "DARK_GREEN"),
@@ -19,12 +21,12 @@ public enum EnergyRating {
     F("F", 1000, new BigDecimal("-120.00"), "DARK_RED"),
     G("G", 1200, new BigDecimal("-200.00"), "DARK_RED");
 
-    private static final Logger logger = LogManager.getLogger(EnergyRating.class);
+    private static  Logger logger = LogManager.getLogger(EnergyRating.class);
 
-    private final String label;
-    private final int maxKwhPerYear;
-    private final BigDecimal annualSavingVsBaseline;
-    private final String colour;
+    private  String label;
+    private  int maxKwhPerYear;
+    private  BigDecimal annualSavingVsBaseline;
+    private  String colour;
 
     static {
         logger.info("EnergyRating enum loaded.");

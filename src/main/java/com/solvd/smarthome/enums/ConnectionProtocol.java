@@ -1,11 +1,13 @@
 package com.solvd.smarthome.enums;
 
+import jakarta.xml.bind.annotation.XmlEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
+@XmlEnum
 public enum ConnectionProtocol {
 
     WIFI_24(2.4, 50, true, 300) {
@@ -62,16 +64,16 @@ public enum ConnectionProtocol {
         }
     };
 
-    private static final Logger logger = LogManager.getLogger(ConnectionProtocol.class);
+    private static  Logger logger = LogManager.getLogger(ConnectionProtocol.class);
 
     static {
         logger.info("ConnectionProtocol enum loaded.");
     }
 
-    private final double frequencyGHz;
-    private final int maxRangeMeters;
-    private final boolean encrypted;
-    private final double typicalSpeedMbps;
+    private  double frequencyGHz;
+    private  int maxRangeMeters;
+    private  boolean encrypted;
+    private  double typicalSpeedMbps;
 
     ConnectionProtocol(double frequencyGHz, int maxRangeMeters, boolean encrypted, double typicalSpeedMbps) {
         this.frequencyGHz = frequencyGHz;

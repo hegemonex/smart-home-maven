@@ -2,18 +2,21 @@ package com.solvd.smarthome.district.house.devices.smartdevices;
 
 import com.solvd.smarthome.district.house.devices.Connectable;
 import com.solvd.smarthome.district.house.devices.Switchable;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SmartLight extends SmartDevice implements Connectable, Switchable {
 
     private String color;
     private String model;
     private int brightness;
-    private static final Logger logger =  LogManager.getLogger(SmartLight.class);
+    private static  Logger logger =  LogManager.getLogger(SmartLight.class);
 
 
     public SmartLight(String name, BigDecimal price, LocalDate installedDate, String color, String model, int brightness, boolean connected) {
@@ -23,9 +26,7 @@ public class SmartLight extends SmartDevice implements Connectable, Switchable {
         this.brightness = brightness;
     }
 
-    public SmartLight() {
-        super();
-    }
+    public SmartLight() {}
 
     public String getColor() {
         return color;

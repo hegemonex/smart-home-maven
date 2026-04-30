@@ -13,26 +13,25 @@ import com.solvd.smarthome.district.house.devices.sensors.MotionSensor;
 import com.solvd.smarthome.district.house.devices.sensors.SecurityCamera;
 import com.solvd.smarthome.district.house.devices.smartdevices.*;
 import com.solvd.smarthome.district.house.rooms.*;
-import com.solvd.smarthome.enums.AlertLevel;
-import com.solvd.smarthome.enums.ConnectionProtocol;
-import com.solvd.smarthome.enums.DeviceStatus;
-import com.solvd.smarthome.enums.EnergyRating;
 import com.solvd.smarthome.lambdas.DeviceService;
-import com.solvd.smarthome.reflection.ReflectionDemo;
-import com.solvd.smarthome.threads.CompletableFutureDemo;
-import com.solvd.smarthome.threads.ThreadDemo;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Unmarshaller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 public class Main {
 
@@ -142,54 +141,44 @@ public class Main {
         logger.info("Running health check...");
         DeviceService service = new DeviceService();
 
-        service.scheduleHealthCheck(() ->
-                logger.info("Pinging {} devices", allDevices.length));
+        System.out.println("THE BELOW CODE IS THE MARSHALLING CODE USING JAXB");
+//
+//        JAXBContext context = JAXBContext.newInstance(SmartHome.class);
+//        Marshaller marshaller = context.createMarshaller();
+//
+//        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//
+//        marshaller.marshal(myHome, new File("src/main/resources/data.xml"));
 
-        Supplier<String> greeting = () ->
-                "Hello " + owner.getName() + ", devices: " + allDevices.length;
+        XMLValidator(
+                "src/main/resources/data.xml",
+                "src/main/resources/data.xsd"
+        );
 
-        logger.info(service.generateSystemMessage(greeting));
+        JAXBContext jaxbContext = JAXBContext.newInstance(SmartHome.class);
 
-        Consumer<Device> printer = d -> logger.info("Device: {}", d.deviceInfo());
-        service.processAllDevices(allDevices, printer);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-        Predicate<Device> expensive = d -> d.getPrice().compareTo(new BigDecimal("100")) > 0;
-        Device[] filtered = service.filterDevices(allDevices, expensive);
+        SmartHome home = (SmartHome) unmarshaller.unmarshal(
+                new File("src/main/resources/data.xml"));
 
-        logger.info("Expensive devices count: {}", filtered.length);
-
-        BiConsumer<Device, AlertLevel> alert = (d, l) ->
-                logger.warn("ALERT [{}] {}", l, l.dispatchMessage(d.getName()));
-
-        service.triggerAlert(frontDoorCamera, AlertLevel.CRITICAL, alert);
-
-        logger.info("Enum demo starting...");
-        logger.info("DeviceStatus: {}", DeviceStatus.ONLINE);
-
-        logger.info("Energy rating: {}", EnergyRating.recommend(300));
-
-        logger.info("Connection fastest: {}", ConnectionProtocol.fastest());
-
-        logger.info("Stream total cost: {}",
-                Arrays.stream(allDevices)
-                        .map(Device::getPrice)
-                        .reduce(BigDecimal.ZERO, BigDecimal::add));
-
-        try {
-            SmartLight reflected = ReflectionDemo.createSmartLightViaReflection();
-            logger.info("Reflected device: {}", reflected.getName());
-        } catch (Exception e) {
-            logger.error("Reflection error", e);
-        }
-
-        logger.info("[DONE] System simulation finished successfully.");
+        System.out.println(home.getName());
+        System.out.println(home.getBuiltDate());
 
 
-        ThreadDemo.runThreadExamples();
+    }
 
-        ThreadDemo.runConnectionPoolDemo();
+    public static void XMLValidator(String xmlPath, String xsdPath) throws SAXException, IOException {
 
-        CompletableFutureDemo.runAll();
+        SchemaFactory factory =
+                SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
+        Schema schema = factory.newSchema(new File(xsdPath));
+
+        Validator validator = schema.newValidator();
+
+        validator.validate(new StreamSource(new File(xmlPath)));
+
+        System.out.println("XML is valid against XSD!");
     }
 }

@@ -1,20 +1,31 @@
 package com.solvd.smarthome.district.house.rooms;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Floor {
 
     private int floorNumber;
     private String label;
-    private final List<Room> rooms;
+
+    @XmlElementWrapper(name = "rooms")
+    @XmlElement(name = "room")
+    private  List<Room> rooms;
 
     public Floor(int floorNumber, String label, List<Room> rooms) {
         this.floorNumber = floorNumber;
         this.label = label;
         this.rooms = rooms != null ? new ArrayList<>(rooms) : new ArrayList<>();
     }
+
+    public Floor() {}
 
     public int getFloorNumber() {
         return floorNumber;

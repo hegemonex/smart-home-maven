@@ -1,10 +1,12 @@
 package com.solvd.smarthome.enums;
 
+import jakarta.xml.bind.annotation.XmlEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
+@XmlEnum
 public enum RoomType {
 
     LIVING_ROOM(20, false, 1) {
@@ -55,11 +57,11 @@ public enum RoomType {
         }
     };
 
-    private static final Logger logger = LogManager.getLogger(RoomType.class);
+    private static  Logger logger = LogManager.getLogger(RoomType.class);
 
-    private final int floorLevel;
-    private final int deviceAmount;
-    private final boolean needsVentilation;
+    private  int floorLevel;
+    private  int deviceAmount;
+    private  boolean needsVentilation;
 
     static {
         logger.info("RoomType enum loaded.");

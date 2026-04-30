@@ -2,6 +2,10 @@ package com.solvd.smarthome.district.house.devices;
 
 import com.solvd.smarthome.district.house.SmartHome;
 import com.solvd.smarthome.exceptions.DeviceInstallationException;
+import com.solvd.smarthome.timeadapter.LocalDateAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,6 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class Device {
 
     protected static int deviceCount = 0;
@@ -20,6 +25,8 @@ public abstract class Device {
 
     protected String name;
     protected BigDecimal price;
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     protected LocalDate installedDate;
 
     {
@@ -33,8 +40,7 @@ public abstract class Device {
         deviceCount++;
     }
 
-    public Device() {
-    }
+    public Device() {}
 
     public static int getDeviceCount() {
         return deviceCount;

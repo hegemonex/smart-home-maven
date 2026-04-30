@@ -1,10 +1,12 @@
 package com.solvd.smarthome.enums;
 
+import jakarta.xml.bind.annotation.XmlEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
+@XmlEnum
 public enum DeviceStatus {
 
     ONLINE(1, "Device is online and fully operational", true),
@@ -14,11 +16,11 @@ public enum DeviceStatus {
     MAINTENANCE(5, "Device is undergoing scheduled maintenance", false),
     UPDATING(6, "Device is downloading and applying a firmware update", true);
 
-    private static final Logger logger = LogManager.getLogger(DeviceStatus.class);
+    private static  Logger logger = LogManager.getLogger(DeviceStatus.class);
 
-    private final int statusCode;
-    private final String description;
-    private final boolean isOperational;
+    private  int statusCode;
+    private  String description;
+    private  boolean isOperational;
 
     static {
         logger.info("DeviceStatus enum loaded.");

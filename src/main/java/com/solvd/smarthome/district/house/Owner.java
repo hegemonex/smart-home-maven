@@ -1,13 +1,21 @@
 package com.solvd.smarthome.district.house;
 
+import com.solvd.smarthome.timeadapter.LocalDateAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Owner {
 
     private String name;
     private String email;
     private String phone;
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate memberSince;
 
     public Owner(String name, String email, String phone, LocalDate memberSince) {
@@ -15,6 +23,9 @@ public class Owner {
         this.email = email;
         this.phone = phone;
         this.memberSince = memberSince;
+    }
+
+    public Owner() {
     }
 
     public String getName() {

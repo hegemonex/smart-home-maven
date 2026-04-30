@@ -2,6 +2,10 @@ package com.solvd.smarthome.district.house.devices.sensors;
 
 import com.solvd.smarthome.district.house.devices.Monitorable;
 import com.solvd.smarthome.district.house.devices.Security;
+import com.solvd.smarthome.timeadapter.LocalDateAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,13 +13,17 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SecurityCamera extends Sensor implements Monitorable, Security {
 
     private String resolution;
     private String sensorType;
     private boolean recording;
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDateTime lastMotionDetected;
-    private static final Logger logger =  LogManager.getLogger(SecurityCamera.class);
+
+    private static Logger logger = LogManager.getLogger(SecurityCamera.class);
 
 
     public SecurityCamera(String name, BigDecimal price, LocalDate installedDate, String resolution, String sensorType, Double sensorValue) {
@@ -26,7 +34,6 @@ public class SecurityCamera extends Sensor implements Monitorable, Security {
     }
 
     public SecurityCamera() {
-        super();
     }
 
     public String getResolution() {

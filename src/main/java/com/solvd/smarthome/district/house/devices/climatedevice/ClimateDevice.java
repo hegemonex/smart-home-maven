@@ -15,6 +15,8 @@ public abstract class ClimateDevice extends Device {
         this.temperatureSetting = temperatureSetting;
     }
 
+    public ClimateDevice() {}
+
     public double getTemperatureSetting() {
         return temperatureSetting;
     }

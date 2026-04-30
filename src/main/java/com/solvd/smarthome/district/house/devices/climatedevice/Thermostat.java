@@ -1,10 +1,13 @@
 package com.solvd.smarthome.district.house.devices.climatedevice;
 
 import com.solvd.smarthome.district.house.devices.TemperatureControl;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Thermostat extends ClimateDevice implements TemperatureControl {
 
     private double currentTemp;
@@ -15,6 +18,8 @@ public class Thermostat extends ClimateDevice implements TemperatureControl {
         this.currentTemp = currentTemp;
         this.targetTemp = targetTemp;
     }
+
+    public Thermostat() {}
 
     public double getCurrentTemp() {
         return currentTemp;

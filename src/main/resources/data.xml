@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<smartHome>
+    <name>My Smart Home</name>
+    <builtDate>2023-06-01</builtDate>
+    <neighbourhood>
+        <name>Maple Grove</name>
+        <city>Springfield</city>
+        <totalHouses>120</totalHouses>
+        <hasSecurityGate>true</hasSecurityGate>
+    </neighbourhood>
+    <networkProvider>
+        <companyName>SpeedNet ISP</companyName>
+        <monthlyFee>59.99</monthlyFee>
+        <speedMbps>500</speedMbps>
+        <connectionType>Fiber</connectionType>
+    </networkProvider>
+    <securityCompany>
+        <name>ShieldGuard</name>
+        <contactNumber>+1-555-0911</contactNumber>
+        <monthlyFee>39.99</monthlyFee>
+        <armed>true</armed>
+    </securityCompany>
+    <solarPanel>
+        <manufacturer>SunPower</manufacturer>
+        <outputKw>8.50</outputKw>
+        <panelCount>12</panelCount>
+        <installedDate>2022-07-15</installedDate>
+    </solarPanel>
+    <sewerageSystem>
+        <provider>City Sewerage Co.</provider>
+        <connected>true</connected>
+        <lastInspected>2024-09-10</lastInspected>
+        <pipeType>PVC</pipeType>
+    </sewerageSystem>
+    <garage>
+        <name>Garage</name>
+        <area>50.0</area>
+        <devicegroups/>
+        <carCapacity>2</carCapacity>
+    </garage>
+    <garden>
+        <name>Garden</name>
+        <area>120.00</area>
+        <devicegroups/>
+        <hasIrrigation>true</hasIrrigation>
+    </garden>
+    <homeGym>
+        <name>Home Gym</name>
+        <area>30.00</area>
+        <devicegroups/>
+        <equipmentCount>10</equipmentCount>
+    </homeGym>
+    <owners>
+        <owner>
+            <name>John Smith</name>
+            <email>john@example.com</email>
+            <phone>+1-555-9999</phone>
+            <memberSince>2022-05-01</memberSince>
+        </owner>
+    </owners>
+    <floors>
+        <floor>
+            <floorNumber>1</floorNumber>
+            <label>Ground Floor</label>
+            <rooms>
+                <room>
+                    <name>Living Room</name>
+                    <area>35.00</area>
+                    <devicegroups>
+                        <devicegroup>
+                            <groupName>Living Lighting</groupName>
+                            <category>Lighting</category>
+                            <zones>
+<devicezone>
+    <zoneName>North Lighting</zoneName>
+    <location>North Wall</location>
+    <deviceplacementmap/>
+</devicezone>
+<devicezone>
+    <zoneName>South Lighting</zoneName>
+    <location>South Corner</location>
+    <deviceplacementmap/>
+</devicezone>
+                            </zones>
+                        </devicegroup>
+                        <devicegroup>
+                            <groupName>Entertainment</groupName>
+                            <category>Entertainment</category>
+                            <zones>
+<devicezone>
+    <zoneName>Main Entertainment</zoneName>
+    <location>East Wall</location>
+    <deviceplacementmap/>
+</devicezone>
+                            </zones>
+                        </devicegroup>
+                    </devicegroups>
+                </room>
+            </rooms>
+        </floor>
+    </floors>
+</smartHome>

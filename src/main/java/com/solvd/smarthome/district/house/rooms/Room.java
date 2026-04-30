@@ -1,23 +1,33 @@
 package com.solvd.smarthome.district.house.rooms;
 
 import com.solvd.smarthome.district.house.devices.DeviceGroup;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Room {
 
     protected String name;
     protected BigDecimal area;
-    private final List<DeviceGroup> deviceGroups;
+
+    @XmlElementWrapper(name = "devicegroups")
+    @XmlElement(name = "devicegroup")
+    private  List<DeviceGroup> deviceGroups;
 
     public Room(String name, BigDecimal area, List<DeviceGroup> deviceGroups) {
         this.name = name;
         this.area = area;
         this.deviceGroups = deviceGroups != null ? new ArrayList<>(deviceGroups) : new ArrayList<>();
     }
+
+    public Room() {}
 
     public String getName() {
         return name;

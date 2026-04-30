@@ -1,7 +1,11 @@
 package com.solvd.smarthome.district;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.math.BigDecimal;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class NetworkProvider {
 
     private String companyName;
@@ -15,6 +19,8 @@ public class NetworkProvider {
         this.speedMbps = speedMbps;
         this.connectionType = connectionType;
     }
+
+    public NetworkProvider() {}
 
     public String getCompanyName() {
         return companyName;

@@ -8,7 +8,10 @@ import com.solvd.smarthome.district.house.rooms.Floor;
 import com.solvd.smarthome.district.house.rooms.Garage;
 import com.solvd.smarthome.district.house.rooms.Garden;
 import com.solvd.smarthome.district.house.rooms.HomeGym;
+import com.solvd.smarthome.timeadapter.LocalDateAdapter;
 import com.solvd.smarthome.util.Pair;
+import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,28 +22,39 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SmartHome {
 
-    private static final String SYSTEM_VERSION = "2.0";
+    private static String SYSTEM_VERSION = "2.0";
     private static int totalHomes = 0;
-    private static final Logger logger = LogManager.getLogger(SmartHome.class);
+    private static Logger logger = LogManager.getLogger(SmartHome.class);
 
     static {
         logger.info("Listing all devices for home: {}", SYSTEM_VERSION);
     }
 
-    private final String name;
-    private final LocalDate builtDate;
-    private final Neighbourhood neighbourhood;
-    private final NetworkProvider networkProvider;
-    private final SecurityCompany securityCompany;
-    private final SolarPanel solarPanel;
-    private final SewerageSystem sewerageSystem;
-    private final Garage garage;
-    private final Garden garden;
-    private final HomeGym homeGym;
-    private final Set<Owner> owners;
-    private final List<Floor> floors;
+    private String name;
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate builtDate;
+
+    private Neighbourhood neighbourhood;
+    private NetworkProvider networkProvider;
+    private SecurityCompany securityCompany;
+    private SolarPanel solarPanel;
+    private SewerageSystem sewerageSystem;
+    private Garage garage;
+    private Garden garden;
+    private HomeGym homeGym;
+
+    @XmlElementWrapper(name = "owners")
+    @XmlElement(name = "owner")
+    private Set<Owner> owners = new HashSet<>();
+
+    @XmlElementWrapper(name = "floors")
+    @XmlElement(name = "floor")
+    private List<Floor> floors = new ArrayList<>();
 
     public SmartHome(String name, LocalDate builtDate, Owner primaryOwner,
                      Neighbourhood neighbourhood, NetworkProvider networkProvider,
@@ -67,6 +81,9 @@ public class SmartHome {
         this.floors = floors != null ? new ArrayList<>(floors) : new ArrayList<>();
 
         totalHomes++;
+    }
+
+    public SmartHome() {
     }
 
     public static int getTotalHomes() {

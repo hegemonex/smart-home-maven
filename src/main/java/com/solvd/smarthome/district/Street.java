@@ -1,19 +1,29 @@
 package com.solvd.smarthome.district;
 
 import com.solvd.smarthome.district.house.SmartHome;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Street {
 
     private String streetName;
     private String postalCode;
-    private final List<SmartHome> homes;
+
+    @XmlElementWrapper(name = "homes")
+    @XmlElement(name = "smarthomes")
+    private  List<SmartHome> homes;
 
     public Street(String streetName, String postalCode, List<SmartHome> homes) {
         this.homes = homes != null ? new ArrayList<>(homes) : new ArrayList<>();
     }
+
+    public Street() {}
 
     public String getStreetName() {
         return streetName;

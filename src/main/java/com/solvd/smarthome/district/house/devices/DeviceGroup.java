@@ -1,22 +1,32 @@
 package com.solvd.smarthome.district.house.devices;
 
 import com.solvd.smarthome.exceptions.DeviceNotFoundException;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DeviceGroup {
 
     private String groupName;
     private String category;
-    private final List<DeviceZone> zones;
+
+    @XmlElementWrapper(name = "zones")
+    @XmlElement(name = "devicezone")
+    private  List<DeviceZone> zones;
 
     public DeviceGroup(String groupName, String category, List<DeviceZone> zones) {
         this.groupName = groupName;
         this.category = category;
         this.zones = zones != null ? new ArrayList<>(zones) : new ArrayList<>();
     }
+
+    public DeviceGroup() {}
 
     public String getGroupName() {
         if (groupName == null) {

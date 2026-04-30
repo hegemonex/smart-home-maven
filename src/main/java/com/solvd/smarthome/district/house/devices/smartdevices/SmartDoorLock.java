@@ -2,6 +2,10 @@ package com.solvd.smarthome.district.house.devices.smartdevices;
 
 import com.solvd.smarthome.district.house.devices.Connectable;
 import com.solvd.smarthome.district.house.devices.Device;
+import com.solvd.smarthome.timeadapter.LocalDateAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,17 +13,24 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SmartDoorLock extends Device implements Connectable {
 
     private String lockModel;
     private boolean locked;
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDateTime lastUnlocked;
-    private static final Logger logger =  LogManager.getLogger(SmartDoorLock.class);
+
+    private static Logger logger = LogManager.getLogger(SmartDoorLock.class);
 
     public SmartDoorLock(String name, BigDecimal price, LocalDate installedDate, String lockModel) {
         super(name, price, installedDate);
         this.lockModel = lockModel;
         this.locked = true;
+    }
+
+    public SmartDoorLock() {
     }
 
     public String getLockModel() {

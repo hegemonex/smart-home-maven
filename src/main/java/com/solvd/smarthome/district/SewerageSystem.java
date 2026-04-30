@@ -1,12 +1,21 @@
 package com.solvd.smarthome.district;
 
+import com.solvd.smarthome.timeadapter.LocalDateAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import java.time.LocalDate;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SewerageSystem {
 
     private String provider;
     private boolean connected;
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate lastInspected;
+
     private String pipeType;
 
     public SewerageSystem(String provider, boolean connected, LocalDate lastInspected, String pipeType) {
@@ -14,6 +23,9 @@ public class SewerageSystem {
         this.connected = connected;
         this.lastInspected = lastInspected;
         this.pipeType = pipeType;
+    }
+
+    public SewerageSystem() {
     }
 
     public String getProvider() {

@@ -1,18 +1,21 @@
 package com.solvd.smarthome.district.house.devices.smartdevices;
 
 import com.solvd.smarthome.district.house.devices.Connectable;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SmartTV extends SmartDevice implements Connectable {
 
     private String brand;
     private int screenSize;
     private boolean isOn;
-    private static final Logger logger = LogManager.getLogger(SmartTV.class);
+    private static  Logger logger = LogManager.getLogger(SmartTV.class);
 
     public SmartTV(String name, BigDecimal price, LocalDate installedDate, String brand, int screenSize, boolean connected) {
         super(name, price, installedDate, connected);
@@ -20,6 +23,8 @@ public class SmartTV extends SmartDevice implements Connectable {
         this.screenSize = screenSize;
         this.isOn = false;
     }
+
+    public SmartTV() {}
 
     public String getBrand() {
         return brand;

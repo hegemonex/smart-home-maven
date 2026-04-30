@@ -1,10 +1,13 @@
 package com.solvd.smarthome.district.house.devices.climatedevice;
 
 import com.solvd.smarthome.district.house.devices.TemperatureControl;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SmartAirConditioner extends ClimateDevice implements TemperatureControl {
 
     private String mode;
@@ -17,6 +20,8 @@ public class SmartAirConditioner extends ClimateDevice implements TemperatureCon
         this.temperature = temperature;
         this.fanSpeed = fanSpeed;
     }
+
+    public SmartAirConditioner() {}
 
     public String getMode() {
         return mode;

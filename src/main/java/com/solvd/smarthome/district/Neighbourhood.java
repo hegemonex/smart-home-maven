@@ -1,5 +1,9 @@
 package com.solvd.smarthome.district;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Neighbourhood {
 
     private String name;
@@ -13,6 +17,8 @@ public class Neighbourhood {
         this.totalHouses = totalHouses;
         this.hasSecurityGate = hasSecurityGate;
     }
+
+    public Neighbourhood() {}
 
     public String getName() {
         return name;

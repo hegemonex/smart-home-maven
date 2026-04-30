@@ -1,7 +1,11 @@
 package com.solvd.smarthome.district;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.math.BigDecimal;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SecurityCompany {
 
     private String name;
@@ -15,6 +19,8 @@ public class SecurityCompany {
         this.monthlyFee = monthlyFee;
         this.armed = armed;
     }
+
+    public SecurityCompany() {}
 
     public String getName() {
         return name;

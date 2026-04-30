@@ -2,18 +2,21 @@ package com.solvd.smarthome.district.house.devices.smartdevices;
 
 import com.solvd.smarthome.district.house.devices.Connectable;
 import com.solvd.smarthome.district.house.devices.Switchable;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SmartSpeaker extends SmartDevice implements Connectable, Switchable {
 
     private String assistantName;
     private int volume;
     private int maxVolume;
-    private static final Logger logger = LogManager.getLogger(SmartSpeaker.class);
+    private static  Logger logger = LogManager.getLogger(SmartSpeaker.class);
 
 
     public SmartSpeaker(String name, BigDecimal price, LocalDate installedDate, String assistantName, int volume, int maxVolume, boolean connected) {
@@ -22,6 +25,8 @@ public class SmartSpeaker extends SmartDevice implements Connectable, Switchable
         this.volume = volume;
         this.maxVolume = maxVolume;
     }
+
+    public SmartSpeaker() {}
 
     public String getAssistantName() {
         return assistantName;
