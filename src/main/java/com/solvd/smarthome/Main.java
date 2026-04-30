@@ -176,6 +176,8 @@ public class Main {
         SmartHome home = SmartHomeDOMParser.parse(document);
 
         System.out.println(home.listAllDevices());
+
+        System.out.println("XPath examples documented in SmartHomeDOMParser");
     }
 
     public static void XMLValidator(String xmlPath, String xsdPath) throws SAXException, IOException {
