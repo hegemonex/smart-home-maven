@@ -1,5 +1,7 @@
 package com.solvd.smarthome.district.house;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.solvd.smarthome.district.Neighbourhood;
 import com.solvd.smarthome.district.NetworkProvider;
 import com.solvd.smarthome.district.SecurityCompany;
@@ -24,6 +26,7 @@ import java.util.stream.Collectors;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SmartHome {
 
     private static String SYSTEM_VERSION = "2.0";
@@ -134,6 +137,7 @@ public class SmartHome {
                 + "\nDevices:\n" + floorsList + "\n";
     }
 
+    @JsonIgnore
     public Pair<String, String> getHomeOwnerSummary() {
         Owner primary = getPrimaryOwner();
         return new Pair<>(name, primary != null ? primary.getName() : "Unknown");

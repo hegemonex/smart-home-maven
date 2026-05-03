@@ -1,0 +1,24 @@
+package com.solvd.smarthome.parser;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.solvd.smarthome.district.house.SmartHome;
+
+import java.io.File;
+
+public class JacksonParser implements Parser {
+
+    @Override
+    public SmartHome parse(File file) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+
+            mapper.registerModule(new JavaTimeModule());
+
+            return mapper.readValue(file, SmartHome.class);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Jackson parsing failed", e);
+        }
+    }
+}

@@ -1,5 +1,7 @@
 package com.solvd.smarthome;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.solvd.smarthome.district.*;
 import com.solvd.smarthome.district.house.Owner;
 import com.solvd.smarthome.district.house.SmartHome;
@@ -13,19 +15,16 @@ import com.solvd.smarthome.district.house.devices.sensors.MotionSensor;
 import com.solvd.smarthome.district.house.devices.sensors.SecurityCamera;
 import com.solvd.smarthome.district.house.devices.smartdevices.*;
 import com.solvd.smarthome.district.house.rooms.*;
-import com.solvd.smarthome.domparser.SmartHomeDOMParser;
+import com.solvd.smarthome.parser.JAXBParser;
+import com.solvd.smarthome.parser.JacksonParser;
+import com.solvd.smarthome.parser.SmartHomeDOMParser;
 import com.solvd.smarthome.lambdas.DeviceService;
+import com.solvd.smarthome.parser.Parser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -34,7 +33,9 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -168,16 +169,47 @@ public class Main {
 //        System.out.println(home.getName());
 //        System.out.println(home.getBuiltDate());
 
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = dbf.newDocumentBuilder();
+//        Parser parser = new SmartHomeDOMParser();
+//
+//        SmartHome home = parser.parse(
+//                new File("src/main/resources/data.xml")
+//        );
+//
+//        System.out.println(home.getName());
+//
+//        System.out.println(home.listAllDevices());
+//
+//        System.out.println("XPath examples documented in SmartHomeDOMParser");
+//
+//
+//        Parser parser1 = new JAXBParser();
+//
+//        SmartHome home1 = parser1.parse(
+//                new File("src/main/resources/data.xml")
+//        );
+//
+//        System.out.println(home1.getName());
+//
+//        System.out.println(home1.listAllDevices());
+//
 
-        Document document = builder.parse(new File("src/main/resources/data.xml"));
+        System.out.println("THE BELOW CODE IS THE MARSHALLING CODE USING JSON");
 
-        SmartHome home = SmartHomeDOMParser.parse(document);
 
-        System.out.println(home.listAllDevices());
+        ObjectMapper mapper = new ObjectMapper();
 
-        System.out.println("XPath examples documented in SmartHomeDOMParser");
+        mapper.registerModule(new JavaTimeModule());
+
+        mapper.writerWithDefaultPrettyPrinter()
+                .writeValue(new File("src/main/resources/data.json"), myHome);
+
+        Parser parser = new JacksonParser();
+
+        SmartHome home = parser.parse(
+                new File("src/main/resources/data.json")
+        );
+
+        System.out.println(home.getName());
     }
 
     public static void XMLValidator(String xmlPath, String xsdPath) throws SAXException, IOException {
