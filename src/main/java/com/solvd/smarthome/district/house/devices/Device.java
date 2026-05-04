@@ -1,6 +1,5 @@
 package com.solvd.smarthome.district.house.devices;
 
-import com.solvd.smarthome.district.house.SmartHome;
 import com.solvd.smarthome.exceptions.DeviceInstallationException;
 import com.solvd.smarthome.timeadapter.LocalDateAdapter;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -40,7 +39,8 @@ public abstract class Device {
         deviceCount++;
     }
 
-    public Device() {}
+    public Device() {
+    }
 
     public static int getDeviceCount() {
         return deviceCount;

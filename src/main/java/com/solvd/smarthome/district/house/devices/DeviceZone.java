@@ -17,7 +17,7 @@ public class DeviceZone {
 
     @XmlElementWrapper(name = "deviceplacementmap")
     @XmlElement(name = "device")
-    private  Map<Device, String> devicePlacementMap;
+    private Map<Device, String> devicePlacementMap;
 
     public DeviceZone(String zoneName, String location) {
         this.zoneName = zoneName;
@@ -25,7 +25,8 @@ public class DeviceZone {
         this.devicePlacementMap = new HashMap<>();
     }
 
-    public DeviceZone() {}
+    public DeviceZone() {
+    }
 
     public String getZoneName() {
         return zoneName;

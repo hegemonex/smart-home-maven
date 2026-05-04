@@ -20,7 +20,8 @@ public class NetworkProvider {
         this.connectionType = connectionType;
     }
 
-    public NetworkProvider() {}
+    public NetworkProvider() {
+    }
 
     public String getCompanyName() {
         return companyName;

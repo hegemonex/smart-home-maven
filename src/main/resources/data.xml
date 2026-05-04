@@ -71,27 +71,27 @@
                             <groupName>Living Lighting</groupName>
                             <category>Lighting</category>
                             <zones>
-<devicezone>
-    <zoneName>North Lighting</zoneName>
-    <location>North Wall</location>
-    <deviceplacementmap/>
-</devicezone>
-<devicezone>
-    <zoneName>South Lighting</zoneName>
-    <location>South Corner</location>
-    <deviceplacementmap/>
-</devicezone>
+                                <devicezone>
+                                    <zoneName>North Lighting</zoneName>
+                                    <location>North Wall</location>
+                                    <deviceplacementmap/>
+                                </devicezone>
+                                <devicezone>
+                                    <zoneName>South Lighting</zoneName>
+                                    <location>South Corner</location>
+                                    <deviceplacementmap/>
+                                </devicezone>
                             </zones>
                         </devicegroup>
                         <devicegroup>
                             <groupName>Entertainment</groupName>
                             <category>Entertainment</category>
                             <zones>
-<devicezone>
-    <zoneName>Main Entertainment</zoneName>
-    <location>East Wall</location>
-    <deviceplacementmap/>
-</devicezone>
+                                <devicezone>
+                                    <zoneName>Main Entertainment</zoneName>
+                                    <location>East Wall</location>
+                                    <deviceplacementmap/>
+                                </devicezone>
                             </zones>
                         </devicegroup>
                     </devicegroups>

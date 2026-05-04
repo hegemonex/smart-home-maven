@@ -17,13 +17,14 @@ public class Street {
 
     @XmlElementWrapper(name = "homes")
     @XmlElement(name = "smarthomes")
-    private  List<SmartHome> homes;
+    private List<SmartHome> homes;
 
     public Street(String streetName, String postalCode, List<SmartHome> homes) {
         this.homes = homes != null ? new ArrayList<>(homes) : new ArrayList<>();
     }
 
-    public Street() {}
+    public Street() {
+    }
 
     public String getStreetName() {
         return streetName;

@@ -12,16 +12,16 @@ public enum AlertLevel {
     CRITICAL(2, "ORANGE", true, true),
     EMERGENCY(3, "RED", true, true);
 
-    private static  Logger logger = LogManager.getLogger(AlertLevel.class);
+    private static Logger logger = LogManager.getLogger(AlertLevel.class);
 
     static {
         logger.info("AlertLevel enum loaded.");
     }
 
-    private  int severity;
-    private  String colour;
-    private  boolean requiresImmediateAction;
-    private  boolean soundAlarm;
+    private int severity;
+    private String colour;
+    private boolean requiresImmediateAction;
+    private boolean soundAlarm;
 
     AlertLevel(int severity, String colour, boolean requiresImmediateAction, boolean soundAlarm) {
         this.severity = severity;

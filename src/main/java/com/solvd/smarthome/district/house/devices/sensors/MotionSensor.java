@@ -1,7 +1,6 @@
 package com.solvd.smarthome.district.house.devices.sensors;
 
 import com.solvd.smarthome.district.house.devices.Monitorable;
-import com.solvd.smarthome.district.house.devices.smartdevices.SmartDevice;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +15,7 @@ public class MotionSensor extends Sensor implements Monitorable {
     private int sensitivity;
     private boolean motionDetected;
     private int detectionRangeMeters;
-    private static  Logger logger =  LogManager.getLogger(MotionSensor.class);
+    private static Logger logger = LogManager.getLogger(MotionSensor.class);
 
     public MotionSensor(String name, BigDecimal price, LocalDate installedDate, int sensitivity, int detectionRangeMeters, Double sensorValue, String sensorType) {
         super(name, price, installedDate, sensorValue, sensorType);
@@ -25,7 +24,8 @@ public class MotionSensor extends Sensor implements Monitorable {
         this.motionDetected = false;
     }
 
-    public MotionSensor() {}
+    public MotionSensor() {
+    }
 
     public int getSensitivity() {
         return sensitivity;

@@ -17,7 +17,8 @@ public class Garden extends Room {
         this.hasIrrigation = hasIrrigation;
     }
 
-    public Garden() {}
+    public Garden() {
+    }
 
     public boolean isHasIrrigation() {
         return hasIrrigation;

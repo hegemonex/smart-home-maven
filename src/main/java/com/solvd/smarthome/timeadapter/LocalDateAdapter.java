@@ -3,7 +3,6 @@ package com.solvd.smarthome.timeadapter;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class LocalDateAdapter extends XmlAdapter<String, LocalDate> {
 

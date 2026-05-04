@@ -15,7 +15,7 @@ public class SmartPlug extends SmartDevice implements Connectable {
     private String connectedDevice;
     private BigDecimal maxWattage;
     private boolean active;
-    private static  Logger logger = LogManager.getLogger(SmartPlug.class);
+    private static Logger logger = LogManager.getLogger(SmartPlug.class);
 
     public SmartPlug(String name, BigDecimal price, LocalDate installedDate, String connectedDevice, BigDecimal maxWattage, boolean conected) {
         super(name, price, installedDate, conected);
@@ -24,7 +24,8 @@ public class SmartPlug extends SmartDevice implements Connectable {
         this.active = false;
     }
 
-    public SmartPlug() {}
+    public SmartPlug() {
+    }
 
     public String getConnectedDevice() {
         return connectedDevice;

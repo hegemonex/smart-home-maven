@@ -57,11 +57,11 @@ public enum RoomType {
         }
     };
 
-    private static  Logger logger = LogManager.getLogger(RoomType.class);
+    private static Logger logger = LogManager.getLogger(RoomType.class);
 
-    private  int floorLevel;
-    private  int deviceAmount;
-    private  boolean needsVentilation;
+    private int floorLevel;
+    private int deviceAmount;
+    private boolean needsVentilation;
 
     static {
         logger.info("RoomType enum loaded.");

@@ -19,7 +19,7 @@ public class District {
 
     @XmlElementWrapper(name = "streetmap")
     @XmlElement(name = "street")
-    private  Map<String, Street> streetMap;
+    private Map<String, Street> streetMap;
 
     public District(String districtName, String city, String country, List<Street> streets) {
         this.districtName = districtName;
@@ -34,7 +34,8 @@ public class District {
         }
     }
 
-    public District() {}
+    public District() {
+    }
 
     public String getDistrictName() {
         return districtName;

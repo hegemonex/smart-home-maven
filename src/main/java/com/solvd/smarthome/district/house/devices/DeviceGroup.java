@@ -18,7 +18,7 @@ public class DeviceGroup {
 
     @XmlElementWrapper(name = "zones")
     @XmlElement(name = "devicezone")
-    private  List<DeviceZone> zones;
+    private List<DeviceZone> zones;
 
     public DeviceGroup(String groupName, String category, List<DeviceZone> zones) {
         this.groupName = groupName;
@@ -26,7 +26,8 @@ public class DeviceGroup {
         this.zones = zones != null ? new ArrayList<>(zones) : new ArrayList<>();
     }
 
-    public DeviceGroup() {}
+    public DeviceGroup() {
+    }
 
     public String getGroupName() {
         if (groupName == null) {

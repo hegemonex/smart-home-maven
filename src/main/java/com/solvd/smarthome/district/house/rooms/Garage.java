@@ -17,7 +17,8 @@ public class Garage extends Room {
         this.carCapacity = carCapacity;
     }
 
-    public Garage() {}
+    public Garage() {
+    }
 
     public int getCarCapacity() {
         return carCapacity;

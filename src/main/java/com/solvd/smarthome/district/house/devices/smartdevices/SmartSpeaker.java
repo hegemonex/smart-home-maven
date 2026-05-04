@@ -16,7 +16,7 @@ public class SmartSpeaker extends SmartDevice implements Connectable, Switchable
     private String assistantName;
     private int volume;
     private int maxVolume;
-    private static  Logger logger = LogManager.getLogger(SmartSpeaker.class);
+    private static Logger logger = LogManager.getLogger(SmartSpeaker.class);
 
 
     public SmartSpeaker(String name, BigDecimal price, LocalDate installedDate, String assistantName, int volume, int maxVolume, boolean connected) {
@@ -26,7 +26,8 @@ public class SmartSpeaker extends SmartDevice implements Connectable, Switchable
         this.maxVolume = maxVolume;
     }
 
-    public SmartSpeaker() {}
+    public SmartSpeaker() {
+    }
 
     public String getAssistantName() {
         return assistantName;

@@ -64,16 +64,16 @@ public enum ConnectionProtocol {
         }
     };
 
-    private static  Logger logger = LogManager.getLogger(ConnectionProtocol.class);
+    private static Logger logger = LogManager.getLogger(ConnectionProtocol.class);
 
     static {
         logger.info("ConnectionProtocol enum loaded.");
     }
 
-    private  double frequencyGHz;
-    private  int maxRangeMeters;
-    private  boolean encrypted;
-    private  double typicalSpeedMbps;
+    private double frequencyGHz;
+    private int maxRangeMeters;
+    private boolean encrypted;
+    private double typicalSpeedMbps;
 
     ConnectionProtocol(double frequencyGHz, int maxRangeMeters, boolean encrypted, double typicalSpeedMbps) {
         this.frequencyGHz = frequencyGHz;

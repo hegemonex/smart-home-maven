@@ -19,7 +19,8 @@ public class Thermostat extends ClimateDevice implements TemperatureControl {
         this.targetTemp = targetTemp;
     }
 
-    public Thermostat() {}
+    public Thermostat() {
+    }
 
     public double getCurrentTemp() {
         return currentTemp;

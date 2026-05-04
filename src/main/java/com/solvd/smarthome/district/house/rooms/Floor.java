@@ -17,7 +17,7 @@ public class Floor {
 
     @XmlElementWrapper(name = "rooms")
     @XmlElement(name = "room")
-    private  List<Room> rooms;
+    private List<Room> rooms;
 
     public Floor(int floorNumber, String label, List<Room> rooms) {
         this.floorNumber = floorNumber;
@@ -25,7 +25,8 @@ public class Floor {
         this.rooms = rooms != null ? new ArrayList<>(rooms) : new ArrayList<>();
     }
 
-    public Floor() {}
+    public Floor() {
+    }
 
     public int getFloorNumber() {
         return floorNumber;

@@ -119,20 +119,33 @@
                                                                 <xs:element name="devicegroups">
                                                                     <xs:complexType>
                                                                         <xs:sequence>
-                                                                            <xs:element name="devicegroup" maxOccurs="unbounded" minOccurs="0">
+                                                                            <xs:element name="devicegroup"
+                                                                                        maxOccurs="unbounded"
+                                                                                        minOccurs="0">
                                                                                 <xs:complexType>
                                                                                     <xs:sequence>
-                                                                                        <xs:element type="xs:string" name="groupName"/>
-                                                                                        <xs:element type="xs:string" name="category"/>
+                                                                                        <xs:element type="xs:string"
+                                                                                                    name="groupName"/>
+                                                                                        <xs:element type="xs:string"
+                                                                                                    name="category"/>
                                                                                         <xs:element name="zones">
                                                                                             <xs:complexType>
                                                                                                 <xs:sequence>
-                                                                                                    <xs:element name="devicezone" maxOccurs="unbounded" minOccurs="0">
+                                                                                                    <xs:element
+                                                                                                            name="devicezone"
+                                                                                                            maxOccurs="unbounded"
+                                                                                                            minOccurs="0">
                                                                                                         <xs:complexType>
                                                                                                             <xs:sequence>
-                                                                                                                <xs:element type="xs:string" name="zoneName"/>
-                                                                                                                <xs:element type="xs:string" name="location"/>
-                                                                                                                <xs:element type="xs:string" name="deviceplacementmap"/>
+                                                                                                                <xs:element
+                                                                                                                        type="xs:string"
+                                                                                                                        name="zoneName"/>
+                                                                                                                <xs:element
+                                                                                                                        type="xs:string"
+                                                                                                                        name="location"/>
+                                                                                                                <xs:element
+                                                                                                                        type="xs:string"
+                                                                                                                        name="deviceplacementmap"/>
                                                                                                             </xs:sequence>
                                                                                                         </xs:complexType>
                                                                                                     </xs:element>

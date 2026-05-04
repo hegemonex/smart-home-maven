@@ -12,7 +12,7 @@ public abstract class Sensor extends Device {
 
     protected double sensorValue;
     protected String sensorType;
-    private static final Logger logger =  LogManager.getLogger(Sensor.class);
+    private static final Logger logger = LogManager.getLogger(Sensor.class);
 
     public Sensor(String name, BigDecimal price, LocalDate installedDate, double sensorValue, String sensorType) {
         super(name, price, installedDate);

@@ -44,7 +44,7 @@ public class ThreadDemo {
 
     public static void runConnectionPoolDemo() throws InterruptedException {
 
-        final int POOL_SIZE    = 5;
+        final int POOL_SIZE = 5;
         final int THREAD_COUNT = 7;
 
         ConnectionPool pool = ConnectionPool.getInstance(POOL_SIZE);

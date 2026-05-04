@@ -26,30 +26,14 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * SmartHomeDOMParser is responsible for parsing SmartHome XML
- * using DOM and reconstructing the full object hierarchy.
- * <p>
- * This class also demonstrates XPath usage for querying XML nodes.
- * <p>
- * Example XPath expressions used in SmartHome XML:
- * <p>
+ * DOM parser for SmartHome XML.
+ *
+ * Example XPath queries:
  * 1. /smartHome/name
- * → Retrieves the name of the SmartHome
- * <p>
- * 2. /smartHome/builtDate
- * → Retrieves the built date of the SmartHome
- * <p>
- * 3. /smartHome/neighbourhood/city
- * → Retrieves the city of the neighbourhood
- * <p>
- * 4. //owner/name
- * → Retrieves all owner names in the system
- * <p>
- * 5. //devicegroup/groupName
- * → Retrieves all device group names across rooms
- * <p>
- * 6. /smartHome/floors/floor/rooms/room/name
- * → Retrieves all room names in all floors
+ * 2. /smartHome/owners/owner/name
+ * 3. /smartHome/floors/floor/rooms/room/name
+ * 4. //devicegroup/groupName
+ * 5. //devicezone/location
  */
 public class SmartHomeDOMParser implements Parser {
 

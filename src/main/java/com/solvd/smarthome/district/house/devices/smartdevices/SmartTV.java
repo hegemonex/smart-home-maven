@@ -15,7 +15,7 @@ public class SmartTV extends SmartDevice implements Connectable {
     private String brand;
     private int screenSize;
     private boolean isOn;
-    private static  Logger logger = LogManager.getLogger(SmartTV.class);
+    private static Logger logger = LogManager.getLogger(SmartTV.class);
 
     public SmartTV(String name, BigDecimal price, LocalDate installedDate, String brand, int screenSize, boolean connected) {
         super(name, price, installedDate, connected);
@@ -24,7 +24,8 @@ public class SmartTV extends SmartDevice implements Connectable {
         this.isOn = false;
     }
 
-    public SmartTV() {}
+    public SmartTV() {
+    }
 
     public String getBrand() {
         return brand;

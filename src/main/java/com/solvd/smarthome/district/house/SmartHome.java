@@ -119,6 +119,50 @@ public class SmartHome {
         return owners.isEmpty() ? null : owners.iterator().next();
     }
 
+    public static Logger getLogger() {
+        return logger;
+    }
+
+    public Neighbourhood getNeighbourhood() {
+        return neighbourhood;
+    }
+
+    public NetworkProvider getNetworkProvider() {
+        return networkProvider;
+    }
+
+    public SecurityCompany getSecurityCompany() {
+        return securityCompany;
+    }
+
+    public SolarPanel getSolarPanel() {
+        return solarPanel;
+    }
+
+    public SewerageSystem getSewerageSystem() {
+        return sewerageSystem;
+    }
+
+    public Garage getGarage() {
+        return garage;
+    }
+
+    public Garden getGarden() {
+        return garden;
+    }
+
+    public HomeGym getHomeGym() {
+        return homeGym;
+    }
+
+    public Set<Owner> getOwners() {
+        return owners;
+    }
+
+    public List<Floor> getFloors() {
+        return floors;
+    }
+
     public String listAllDevices() {
         if (floors.isEmpty()) {
             return name + " has no floors set up yet.";

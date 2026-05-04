@@ -21,7 +21,8 @@ public class SmartAirConditioner extends ClimateDevice implements TemperatureCon
         this.fanSpeed = fanSpeed;
     }
 
-    public SmartAirConditioner() {}
+    public SmartAirConditioner() {
+    }
 
     public String getMode() {
         return mode;

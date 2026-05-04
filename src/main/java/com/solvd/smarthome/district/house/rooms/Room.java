@@ -19,7 +19,7 @@ public class Room {
 
     @XmlElementWrapper(name = "devicegroups")
     @XmlElement(name = "devicegroup")
-    private  List<DeviceGroup> deviceGroups;
+    private List<DeviceGroup> deviceGroups;
 
     public Room(String name, BigDecimal area, List<DeviceGroup> deviceGroups) {
         this.name = name;
@@ -27,7 +27,8 @@ public class Room {
         this.deviceGroups = deviceGroups != null ? new ArrayList<>(deviceGroups) : new ArrayList<>();
     }
 
-    public Room() {}
+    public Room() {
+    }
 
     public String getName() {
         return name;

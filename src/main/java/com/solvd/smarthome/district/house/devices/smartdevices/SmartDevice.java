@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public abstract class SmartDevice extends Device {
 
     protected boolean connectedToWifi = false;
-    private static final Logger logger =  LogManager.getLogger(SmartDevice.class);
+    private static final Logger logger = LogManager.getLogger(SmartDevice.class);
 
     public SmartDevice(String name, BigDecimal price, LocalDate installedDate, boolean connectedToWifi) {
         super(name, price, installedDate);

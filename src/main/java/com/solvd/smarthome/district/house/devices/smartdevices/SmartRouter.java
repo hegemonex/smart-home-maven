@@ -16,7 +16,7 @@ public class SmartRouter extends SmartDevice implements Connectable {
     private String ssid;
     private int connectedDevicesCount;
     private double bandwidthGbps;
-    private static  Logger logger = LogManager.getLogger(SmartRouter.class);
+    private static Logger logger = LogManager.getLogger(SmartRouter.class);
 
     public SmartRouter(String name, BigDecimal price, LocalDate installedDate, String ssid, int connectedDevicesCount, double bandwidthGbps, boolean connected) {
         super(name, price, installedDate, connected);
@@ -25,7 +25,8 @@ public class SmartRouter extends SmartDevice implements Connectable {
         this.bandwidthGbps = bandwidthGbps;
     }
 
-    public SmartRouter() {}
+    public SmartRouter() {
+    }
 
     public String getSsid() {
         return ssid;

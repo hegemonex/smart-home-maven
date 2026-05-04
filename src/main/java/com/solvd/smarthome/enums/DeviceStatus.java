@@ -16,11 +16,11 @@ public enum DeviceStatus {
     MAINTENANCE(5, "Device is undergoing scheduled maintenance", false),
     UPDATING(6, "Device is downloading and applying a firmware update", true);
 
-    private static  Logger logger = LogManager.getLogger(DeviceStatus.class);
+    private static Logger logger = LogManager.getLogger(DeviceStatus.class);
 
-    private  int statusCode;
-    private  String description;
-    private  boolean isOperational;
+    private int statusCode;
+    private String description;
+    private boolean isOperational;
 
     static {
         logger.info("DeviceStatus enum loaded.");

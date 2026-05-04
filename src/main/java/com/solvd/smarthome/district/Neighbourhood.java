@@ -18,7 +18,8 @@ public class Neighbourhood {
         this.hasSecurityGate = hasSecurityGate;
     }
 
-    public Neighbourhood() {}
+    public Neighbourhood() {
+    }
 
     public String getName() {
         return name;

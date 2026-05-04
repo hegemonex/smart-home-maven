@@ -14,7 +14,8 @@ public class HomeGym extends Room {
         this.equipmentCount = equipmentCount;
     }
 
-    public HomeGym() {}
+    public HomeGym() {
+    }
 
     public int getEquipmentCount() {
         return equipmentCount;

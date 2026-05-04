@@ -21,12 +21,12 @@ public enum EnergyRating {
     F("F", 1000, new BigDecimal("-120.00"), "DARK_RED"),
     G("G", 1200, new BigDecimal("-200.00"), "DARK_RED");
 
-    private static  Logger logger = LogManager.getLogger(EnergyRating.class);
+    private static Logger logger = LogManager.getLogger(EnergyRating.class);
 
-    private  String label;
-    private  int maxKwhPerYear;
-    private  BigDecimal annualSavingVsBaseline;
-    private  String colour;
+    private String label;
+    private int maxKwhPerYear;
+    private BigDecimal annualSavingVsBaseline;
+    private String colour;
 
     static {
         logger.info("EnergyRating enum loaded.");

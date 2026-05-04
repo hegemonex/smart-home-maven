@@ -16,7 +16,7 @@ public class SmartLight extends SmartDevice implements Connectable, Switchable {
     private String color;
     private String model;
     private int brightness;
-    private static  Logger logger =  LogManager.getLogger(SmartLight.class);
+    private static Logger logger = LogManager.getLogger(SmartLight.class);
 
 
     public SmartLight(String name, BigDecimal price, LocalDate installedDate, String color, String model, int brightness, boolean connected) {
@@ -26,7 +26,8 @@ public class SmartLight extends SmartDevice implements Connectable, Switchable {
         this.brightness = brightness;
     }
 
-    public SmartLight() {}
+    public SmartLight() {
+    }
 
     public String getColor() {
         return color;

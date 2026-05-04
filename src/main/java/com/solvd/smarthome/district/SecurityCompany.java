@@ -20,7 +20,8 @@ public class SecurityCompany {
         this.armed = armed;
     }
 
-    public SecurityCompany() {}
+    public SecurityCompany() {
+    }
 
     public String getName() {
         return name;
