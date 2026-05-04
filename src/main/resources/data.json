@@ -1,0 +1,10 @@
+{
+  "name" : "My Smart Home",
+  "builtDate" : [ 2023, 6, 1 ],
+  "primaryOwner" : {
+    "name" : "John Smith",
+    "email" : "john@example.com",
+    "phone" : "+1-555-9999",
+    "memberSince" : [ 2022, 5, 1 ]
+  }
+}
