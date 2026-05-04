@@ -1,5 +1,6 @@
 package com.solvd.smarthome.district.house;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.solvd.smarthome.timeadapter.LocalDateAdapter;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -16,6 +17,7 @@ public class Owner {
     private String phone;
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate memberSince;
 
     public Owner(String name, String email, String phone, LocalDate memberSince) {

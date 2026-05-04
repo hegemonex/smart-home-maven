@@ -1,5 +1,6 @@
 package com.solvd.smarthome.district.house.devices.smartdevices;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.solvd.smarthome.district.house.devices.Connectable;
 import com.solvd.smarthome.district.house.devices.Device;
 import com.solvd.smarthome.timeadapter.LocalDateAdapter;
@@ -20,6 +21,7 @@ public class SmartDoorLock extends Device implements Connectable {
     private boolean locked;
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime lastUnlocked;
 
     private static Logger logger = LogManager.getLogger(SmartDoorLock.class);

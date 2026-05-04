@@ -1,5 +1,6 @@
 package com.solvd.smarthome.district.house.devices.sensors;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.solvd.smarthome.district.house.devices.Monitorable;
 import com.solvd.smarthome.district.house.devices.Security;
 import com.solvd.smarthome.timeadapter.LocalDateAdapter;
@@ -21,6 +22,7 @@ public class SecurityCamera extends Sensor implements Monitorable, Security {
     private boolean recording;
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime lastMotionDetected;
 
     private static Logger logger = LogManager.getLogger(SecurityCamera.class);

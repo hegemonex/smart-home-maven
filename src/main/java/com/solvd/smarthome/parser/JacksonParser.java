@@ -15,7 +15,7 @@ public class JacksonParser implements Parser {
         try {
             ObjectMapper mapper = new ObjectMapper();
 
-            mapper.registerModule(new JavaTimeModule());
+            mapper.findAndRegisterModules();
             mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

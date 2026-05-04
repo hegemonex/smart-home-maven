@@ -1,5 +1,6 @@
 package com.solvd.smarthome.district.house;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.solvd.smarthome.district.Neighbourhood;
@@ -40,6 +41,7 @@ public class SmartHome {
     private String name;
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate builtDate;
 
     private Neighbourhood neighbourhood;

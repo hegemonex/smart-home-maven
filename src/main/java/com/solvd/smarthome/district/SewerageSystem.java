@@ -1,5 +1,6 @@
 package com.solvd.smarthome.district;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.solvd.smarthome.timeadapter.LocalDateAdapter;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -14,6 +15,7 @@ public class SewerageSystem {
     private boolean connected;
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate lastInspected;
 
     private String pipeType;
