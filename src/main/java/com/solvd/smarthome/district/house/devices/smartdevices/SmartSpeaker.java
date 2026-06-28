@@ -2,6 +2,8 @@ package com.solvd.smarthome.district.house.devices.smartdevices;
 
 import com.solvd.smarthome.district.house.devices.Connectable;
 import com.solvd.smarthome.district.house.devices.Switchable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,6 +13,8 @@ public class SmartSpeaker extends SmartDevice implements Connectable, Switchable
     private String assistantName;
     private int volume;
     private int maxVolume;
+    private static final Logger logger = LogManager.getLogger(SmartSpeaker.class);
+
 
     public SmartSpeaker(String name, BigDecimal price, LocalDate installedDate, String assistantName, int volume, int maxVolume, boolean connected) {
         super(name, price, installedDate, connected);
@@ -64,26 +68,26 @@ public class SmartSpeaker extends SmartDevice implements Connectable, Switchable
 
     @Override
     public void operate() {
-        System.out.println(name + " is speaking");
+        logger.info("Operating SmartSpeaker");
     }
 
     @Override
     public void connect() {
-        System.out.println(name + " is speaking");
+        logger.info("Connecting SmartSpeaker");
     }
 
     @Override
     public void disconnect() {
-        System.out.println(name + " is speaking");
+        logger.info("Disconnecting SmartSpeaker");
     }
 
     @Override
     public void switchOn() {
-        System.out.println(name + " is speaking");
+        logger.info("Switching On SmartSpeaker");
     }
 
     @Override
     public void switchOff() {
-        System.out.println(name + " is speaking");
+        logger.info("Switching Off SmartSpeaker");
     }
 }

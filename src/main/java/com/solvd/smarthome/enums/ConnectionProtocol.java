@@ -1,5 +1,8 @@
 package com.solvd.smarthome.enums;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -8,6 +11,7 @@ public enum ConnectionProtocol {
     WIFI_24(2.4, 50, true, 300) {
         @Override
         public String connect(String deviceName) {
+            logger.info("{} connecting via WIFI_24", deviceName);
             return deviceName + " joined 2.4 GHz Wi-Fi — good range, moderate speed. "
                     + "Sending 4-way WPA2 handshake...";
         }
@@ -16,6 +20,7 @@ public enum ConnectionProtocol {
     WIFI_5(5.0, 20, true, 1200) {
         @Override
         public String connect(String deviceName) {
+            logger.info("{} connecting via WIFI_5", deviceName);
             return deviceName + " joined 5 GHz Wi-Fi — shorter range but high throughput. "
                     + "Sending WPA3 handshake...";
         }
@@ -24,6 +29,7 @@ public enum ConnectionProtocol {
     ZIGBEE(2.4, 30, true, 0.25) {
         @Override
         public String connect(String deviceName) {
+            logger.info("{} connecting via ZIGBEE", deviceName);
             return deviceName + " joined Zigbee mesh — low power, daisy-chaining with neighbours. "
                     + "Sending IEEE 802.15.4 beacon...";
         }
@@ -32,6 +38,7 @@ public enum ConnectionProtocol {
     ZWAVE(0.9, 40, true, 0.1) {
         @Override
         public String connect(String deviceName) {
+            logger.info("{} connecting via ZWAVE", deviceName);
             return deviceName + " joined Z-Wave mesh — sub-GHz band, very reliable indoors. "
                     + "Assigning Node ID in the Z-Wave network...";
         }
@@ -40,6 +47,7 @@ public enum ConnectionProtocol {
     BLUETOOTH(2.4, 10, true, 3) {
         @Override
         public String connect(String deviceName) {
+            logger.info("{} connecting via BLUETOOTH", deviceName);
             return deviceName + " paired via Bluetooth — short range, low latency. "
                     + "Exchanging PIN / passkey...";
         }
@@ -48,24 +56,22 @@ public enum ConnectionProtocol {
     ETHERNET(0, 999, true, 10000) {
         @Override
         public String connect(String deviceName) {
+            logger.info("{} connecting via ETHERNET", deviceName);
             return deviceName + " connected via Ethernet — wired, maximum reliability. "
                     + "Negotiating link speed with switch...";
         }
     };
 
+    private static final Logger logger = LogManager.getLogger(ConnectionProtocol.class);
+
     static {
-        System.out.println("[ConnectionProtocol] Protocol catalogue loaded — "
-                + ConnectionProtocol.values().length + " protocols registered.");
+        logger.info("ConnectionProtocol enum loaded.");
     }
 
     private final double frequencyGHz;
     private final int maxRangeMeters;
     private final boolean encrypted;
     private final double typicalSpeedMbps;
-
-    {
-        System.out.println("[ConnectionProtocol] Registering protocol constant...");
-    }
 
     ConnectionProtocol(double frequencyGHz, int maxRangeMeters, boolean encrypted, double typicalSpeedMbps) {
         this.frequencyGHz = frequencyGHz;
@@ -76,21 +82,37 @@ public enum ConnectionProtocol {
 
     public static ConnectionProtocol fastest() {
         return Arrays.stream(values())
-                .max(Comparator.comparingDouble(p -> p.typicalSpeedMbps))
+                .max(Comparator.comparingDouble(ConnectionProtocol::getTypicalSpeedMbps))
                 .orElse(ETHERNET);
     }
 
     public abstract String connect(String deviceName);
 
-    public boolean isLongRange() { return maxRangeMeters > 25; }
-    public double getFrequencyGHz() { return frequencyGHz; }
-    public int getMaxRangeMeters() { return maxRangeMeters; }
-    public boolean isEncrypted() { return encrypted; }
-    public double getTypicalSpeedMbps() { return typicalSpeedMbps; }
+    public boolean isLongRange() {
+        return maxRangeMeters > 25;
+    }
+
+    public double getFrequencyGHz() {
+        return frequencyGHz;
+    }
+
+    public int getMaxRangeMeters() {
+        return maxRangeMeters;
+    }
+
+    public boolean isEncrypted() {
+        return encrypted;
+    }
+
+    public double getTypicalSpeedMbps() {
+        return typicalSpeedMbps;
+    }
 
     @Override
     public String toString() {
-        return name() + " (freq=" + frequencyGHz + " GHz, range=" + maxRangeMeters
-                + "m, speed=" + typicalSpeedMbps + " Mbps)";
+        return name() +
+                " (freq=" + frequencyGHz +
+                " GHz, range=" + maxRangeMeters +
+                "m, speed=" + typicalSpeedMbps + " Mbps)";
     }
 }

@@ -1,17 +1,21 @@
 package com.solvd.smarthome.district.house;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class SmartHomeLogger implements AutoCloseable {
+    private static final Logger logger = LogManager.getLogger(SmartHomeLogger.class);
 
     public SmartHomeLogger() {
-        System.out.println("Logger started");
+        logger.info("SmartHome logger created");
     }
 
     public void log(String message) {
-        System.out.println("LOG: " + message);
+        logger.info("LOG: {}", message);
     }
 
     @Override
     public void close() throws Exception {
-        System.out.println("CLOSED");
+        logger.info("CLOSED");
     }
 }

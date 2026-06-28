@@ -2,6 +2,8 @@ package com.solvd.smarthome.district.house.devices.smartdevices;
 
 import com.solvd.smarthome.district.house.devices.Connectable;
 import com.solvd.smarthome.district.house.devices.Switchable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,6 +13,8 @@ public class SmartLight extends SmartDevice implements Connectable, Switchable {
     private String color;
     private String model;
     private int brightness;
+    private static final Logger logger =  LogManager.getLogger(SmartLight.class);
+
 
     public SmartLight(String name, BigDecimal price, LocalDate installedDate, String color, String model, int brightness, boolean connected) {
         super(name, price, installedDate, connected);
@@ -62,26 +66,26 @@ public class SmartLight extends SmartDevice implements Connectable, Switchable {
 
     @Override
     public void operate() {
-        System.out.println(name + " is lighting");
+        logger.info("Operating through the smart network.");
     }
 
     @Override
     public void connect() {
-        System.out.println(name + " is connecting");
+        logger.info("Connecting through the smart network.");
     }
 
     @Override
     public void disconnect() {
-        System.out.println(name + " is disconnecting");
+        logger.info("Disconnecting through the smart network.");
     }
 
     @Override
     public void switchOn() {
-        System.out.println(name + " is switching on");
+        logger.info("Switching through the smart network.");
     }
 
     @Override
     public void switchOff() {
-        System.out.println(name + " is switching off");
+        logger.info("Switching through the smart network.");
     }
 }

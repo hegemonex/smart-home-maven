@@ -1,5 +1,8 @@
 package com.solvd.smarthome.enums;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public enum AlertLevel {
 
     INFO(0, "BLUE", false, false),
@@ -7,19 +10,16 @@ public enum AlertLevel {
     CRITICAL(2, "ORANGE", true, true),
     EMERGENCY(3, "RED", true, true);
 
+    private static final Logger logger = LogManager.getLogger(AlertLevel.class);
+
     static {
-        System.out.println("[AlertLevel] Security alert level scale loaded ("
-                + AlertLevel.values().length + " levels).");
+        logger.info("AlertLevel enum loaded.");
     }
 
     private final int severity;
     private final String colour;
     private final boolean requiresImmediateAction;
     private final boolean soundAlarm;
-
-    {
-        System.out.println("[AlertLevel] Alert level constant initialising...");
-    }
 
     AlertLevel(int severity, String colour, boolean requiresImmediateAction, boolean soundAlarm) {
         this.severity = severity;
@@ -30,15 +30,17 @@ public enum AlertLevel {
 
     public static AlertLevel fromSeverity(int severity) {
         for (AlertLevel level : values()) {
-            if (level.severity == severity) return level;
+            if (level.severity == severity) {
+                return level;
+            }
         }
         return INFO;
     }
 
     public AlertLevel escalate() {
-        AlertLevel[] all = values();
         int nextIndex = this.ordinal() + 1;
-        return nextIndex < all.length ? all[nextIndex] : this;
+        AlertLevel[] levels = values();
+        return nextIndex < levels.length ? levels[nextIndex] : this;
     }
 
     public String dispatchMessage(String deviceName) {
@@ -66,7 +68,9 @@ public enum AlertLevel {
 
     @Override
     public String toString() {
-        return name() + " [severity=" + severity + ", colour=" + colour
-                + ", alarm=" + soundAlarm + "]";
+        return name() +
+                " [severity=" + severity +
+                ", colour=" + colour +
+                ", alarm=" + soundAlarm + "]";
     }
 }

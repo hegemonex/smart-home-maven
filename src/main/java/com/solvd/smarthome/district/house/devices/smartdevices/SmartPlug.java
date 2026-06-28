@@ -1,6 +1,8 @@
 package com.solvd.smarthome.district.house.devices.smartdevices;
 
 import com.solvd.smarthome.district.house.devices.Connectable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -10,6 +12,7 @@ public class SmartPlug extends SmartDevice implements Connectable {
     private String connectedDevice;
     private BigDecimal maxWattage;
     private boolean active;
+    private static final Logger logger = LogManager.getLogger(SmartPlug.class);
 
     public SmartPlug(String name, BigDecimal price, LocalDate installedDate, String connectedDevice, BigDecimal maxWattage, boolean conected) {
         super(name, price, installedDate, conected);
@@ -63,16 +66,16 @@ public class SmartPlug extends SmartDevice implements Connectable {
 
     @Override
     public void operate() {
-        System.out.println(name + " is plugging");
+        logger.info("Operating SmartPlug");
     }
 
     @Override
     public void connect() {
-        System.out.println(name + " is connecting");
+        logger.info("Connecting SmartPlug");
     }
 
     @Override
     public void disconnect() {
-        System.out.println(name + " is disconnecting");
+        logger.info("Disconnecting SmartPlug");
     }
 }

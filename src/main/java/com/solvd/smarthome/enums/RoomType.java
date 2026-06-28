@@ -1,5 +1,8 @@
 package com.solvd.smarthome.enums;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Arrays;
 
 public enum RoomType {
@@ -52,13 +55,15 @@ public enum RoomType {
         }
     };
 
-    static {
-        System.out.println("[RoomType] Enum loaded — " + RoomType.values().length + " room types available.");
-    }
+    private static final Logger logger = LogManager.getLogger(RoomType.class);
 
     private final int floorLevel;
     private final int deviceAmount;
     private final boolean needsVentilation;
+
+    static {
+        logger.info("RoomType enum loaded.");
+    }
 
     RoomType(int deviceAmount, boolean needsVentilation, int floorLevel) {
         this.floorLevel = floorLevel;
@@ -67,22 +72,36 @@ public enum RoomType {
     }
 
     public static RoomType[] forFloor(int level) {
-        return Arrays.stream(values())
+        RoomType[] result = Arrays.stream(values())
                 .filter(rt -> rt.floorLevel == level)
                 .toArray(RoomType[]::new);
+
+        logger.debug("Found {} room types for floor {}", result.length, level);
+        return result;
     }
 
     public String capacityWarning(int installedCount) {
         if (installedCount > deviceAmount) {
+            logger.warn("{} exceeds recommended device capacity: {} > {}", name(), installedCount, deviceAmount);
             return "WARNING: " + name() + " has " + installedCount
                     + " devices but the recommended max is " + deviceAmount + ".";
         }
+
+        logger.debug("{} device count within limits: {}", name(), installedCount);
         return name() + " device count (" + installedCount + ") is within safe limits.";
     }
 
-    public int getDeviceAmount() { return deviceAmount; }
-    public boolean getVentilation() { return needsVentilation; }
-    public int getFloorLevel() { return floorLevel; }
+    public int getDeviceAmount() {
+        return deviceAmount;
+    }
+
+    public boolean isVentilationNeeded() {
+        return needsVentilation;
+    }
+
+    public int getFloorLevel() {
+        return floorLevel;
+    }
 
     public abstract String describeFunction();
 }
